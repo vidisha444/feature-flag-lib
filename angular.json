@@ -104,6 +104,46 @@
           }
         }
       }
+    },
+    "featureflag": {
+      "projectType": "library",
+      "root": "projects/featureflag",
+      "sourceRoot": "projects/featureflag/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/featureflag/tsconfig.lib.json",
+            "project": "projects/featureflag/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/featureflag/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/featureflag/src/test.ts",
+            "tsConfig": "projects/featureflag/tsconfig.spec.json",
+            "karmaConfig": "projects/featureflag/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/featureflag/tsconfig.lib.json",
+              "projects/featureflag/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "feature-flag-lib"
